@@ -1,0 +1,40 @@
+﻿@model BidOne.Web.Models.UserDetailsModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+
+@using (Html.BeginForm("", "", FormMethod.Post, new { role = "form" }))
+{
+    
+    @Html.AntiForgeryToken()
+
+    <div class="text-center">
+        <h1 class="display-4">Add user</h1>
+        
+    </div>
+
+
+    <div class="row mb-3">
+        <div class="col">@(( String.IsNullOrEmpty(Model.Id))? "" : $"New user created: {Model.Id}")</div>
+    </div>
+
+    <div class="row">
+        <div class="col-12"><label asp-for="FirstName">* First name:</label></div>
+        <div class="col-3"><input type="text" class="form-control" asp-for="FirstName" /></div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-12"><label asp-for="LastName">* Last name:</label></div>
+        <div class="col-3"><input type="text" class="form-control" asp-for="LastName" /></div>
+    </div>
+
+
+
+    <div class="row pt-3">
+        <div class="col-12"><button type="submit" class="btn btn-primary">Add new user</button></div>
+    </div>
+
+}
